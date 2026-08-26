@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="description" content="Suzuki Piano Studio — nurturing a lifelong love of music the mother-tongue way. Piano lessons for all ages, taught through listening, repetition and joyful partnership between parent, child and teacher." />
+<meta name="theme-color" content="#faf6f0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="Suzuki Piano" />
+<title>Suzuki Piano Studio · Teaching music the mother-tongue way</title>
+
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="icon" href="icons/icon-96.png" type="image/png" />
+<link rel="apple-touch-icon" href="icons/icon-192.png" />
+
+<style>
+  :root{
+    --bg:#faf6f0;
+    --bg-2:#f3ece2;
+    --ink:#2b2620;
+    --ink-soft:#6b6257;
+    --accent:#c96f4a;
+    --accent-deep:#a9563a;
+    --accent-soft:#f0ddd2;
+    --line:#e4d9ca;
+    --muted:#9a9084;
+    --shadow:0 18px 50px -22px rgba(43,38,32,.30);
+    --radius:22px;
+    --maxw:1080px;
+    --serif:"Georgia","Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.7;
+    font-size:17px;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.15;letter-spacing:.2px}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .eyebrow{
+    font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--accent);font-weight:600;margin-bottom:16px;
+  }
+
+  /* ---------- TOP BAR ---------------- */
+  header.top{
+    position:sticky;top:0;z-index:50;
+    background:rgba(250,246,240,.82);
+    backdrop-filter:saturate(160%) blur(12px);
+    -webkit-backdrop-filter:saturate(160%) blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:11px;font-family:var(--serif);font-size:19px}
+  .brand svg{width:30px;height:30px}
+  nav.main{display:flex;gap:26px;align-items:center}
+  nav.main a{font-size:15px;color:var(--ink-soft);font-weight:500;transition:color .2s}
+  nav.main a:hover{color:var(--accent)}
+  .cta-btn{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--accent);color:#fff !important;
+    padding:10px 20px;border-radius:100px;font-size:14px;font-weight:600;
+    transition:.2s;box-shadow:var(--shadow);border:none;cursor:pointer;font-family:var(--sans);
+  }
+  .cta-btn:hover{background:var(--accent-deep);transform:translateY(-1px)}
+  .menu-btn{display:none;background:none;border:none;cursor:pointer;width:28px;height:24px;position:relative}
+  .menu-btn span{position:absolute;left:0;width:100%;height:2px;background:var(--ink);transition:.25s;transform-origin:center}
+  .menu-btn span:nth-child(1){top:4px}
+  .menu-btn span:nth-child(2){top:11px}
+  .menu-btn span:nth-child(3){top:18px}
+
+  /* ---------- HERO ---------------- */
+  .hero{
+    position:relative;min-height:92vh;display:flex;align-items:center;
+    color:#fff;overflow:hidden;background:#16110c;padding:120px 0 92px;
+  }
+  .hero-bg{
+    position:absolute;inset:0;z-index:0;
+    background:url('images/hero-piano.jpg') center/cover no-repeat;
+    transform:scale(1.06);animation:heroZoom 16s ease-out forwards;
+  }
+  @keyframes heroZoom{to{transform:scale(1)}}
+  .hero-shade{
+    position:absolute;inset:0;z-index:1;
+    background:
+      linear-gradient(90deg,rgba(18,13,9,.94) 0%,rgba(18,13,9,.62) 42%,rgba(18,13,9,.15) 72%,rgba(18,13,9,0) 100%),
+      linear-gradient(0deg,rgba(18,13,9,.92) 0%,rgba(18,13,9,0) 45%);
+  }
+  /* the image fades / wipes in from left to right */
+  .hero-wipe{
+    position:absolute;inset:0;z-index:3;background:#16110c;pointer-events:none;
+    animation:revealLTR 2.5s cubic-bezier(.6,0,.3,1) forwards;
+  }
+  @keyframes revealLTR{to{transform:translateX(103%)}}
+  .hero-inner{position:relative;z-index:4;width:100%}
+  .hero-copy{max-width:640px}
+  .hero h1{font-size:clamp(2.3rem,5vw,3.7rem);margin-bottom:22px}
+  .hero p.lead{font-size:19px;color:rgba(255,255,255,.82);max-width:34ch;margin-bottom:32px}
+  .hero .actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .ghost-btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:11px 22px;border-radius:100px;border:1.5px solid rgba(255,255,255,.4);
+    color:#fff;font-weight:600;font-size:15px;transition:.2s;
+    background:rgba(255,255,255,.08);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+  }
+  .ghost-btn:hover{background:rgba(255,255,255,.18);border-color:#fff}
+
+  .hero-float{
+    display:flex;gap:13px;align-items:center;margin-top:36px;width:max-content;
+    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);
+    border-radius:100px;padding:13px 22px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  }
+  .hero-float .dot{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.14);display:grid;place-items:center;color:#f0ddd2;flex:none}
+  .hero-float b{font-family:var(--serif);font-size:19px;display:block;line-height:1.1;color:#fff}
+  .hero-float span{font-size:12.5px;color:rgba(255,255,255,.7)}
+
+  /* profile strip */
+  .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-2)}
+  .strip .wrap{display:flex;flex-wrap:wrap;gap:20px 46px;justify-content:space-between;align-items:center;padding:22px 24px}
+  .strip p{font-size:14px;color:var(--ink-soft)}
+  .strip b{color:var(--ink);font-family:var(--serif);font-size:15px}
+
+  /* ---------- SECTIONS ---------------- */
+  section{padding:78px 0}
+  section.alt{background:var(--bg-2)}
+  .sec-head{max-width:620px;margin-bottom:44px}
+  .sec-head h2{font-size:clamp(1.7rem,3.4vw,2.4rem);margin-bottom:16px}
+  .sec-head p{color:var(--ink-soft)}
+
+  /* principles grid */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:30px 26px;transition:.25s;position:relative;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--accent-soft)}
+  .card .num{font-family:var(--serif);color:var(--accent);font-size:15px;font-weight:700;margin-bottom:16px;display:inline-block}
+  .card .ico{width:46px;height:46px;border-radius:14px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;margin-bottom:18px}
+  .card h3{font-size:19px;margin-bottom:10px}
+  .card p{font-size:15px;color:var(--ink-soft)}
+
+  /* how it works */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:step}
+  .step{background:transparent;padding:26px 24px;border-radius:var(--radius);position:relative}
+  .step::before{
+    counter-increment:step;content:counter(step,decimal-leading-zero);
+    font-family:var(--serif);font-size:40px;color:var(--accent);display:block;margin-bottom:14px;opacity:.85;
+  }
+  .step h3{font-size:19px;margin-bottom:8px}
+  .step p{font-size:15px;color:var(--ink-soft)}
+
+  /* age cards */
+  .ages{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .age{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px 26px;transition:.25s}
+  .age:hover{box-shadow:var(--shadow);transform:translateY(-4px)}
+  .age .tag{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;font-weight:600}
+  .age h3{font-size:20px;margin-bottom:12px}
+  .age ul{list-style:none}
+  .age li{font-size:15px;color:var(--ink-soft);padding:7px 0;display:flex;gap:10px;align-items:flex-start}
+  .age li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:10px;flex:none}
+
+  /* parent strip */
+  .question{background:var(--accent);color:#fff;border-radius:var(--radius);padding:46px 40px;display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center}
+  .question h2{font-size:clamp(1.5rem,3vw,2.1rem);margin-bottom:14px}
+  .question p{opacity:.92}
+  .question .cards{display:flex;gap:14px}
+  .question .q-card{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:14px;padding:18px 16px;flex:1}
+  .question .q-card b{display:block;font-size:26px;font-family:var(--serif)}
+  .question .q-card span{font-size:12.5px;opacity:.9}
+
+  /* quote */
+  .quote{text-align:center;max-width:760px;margin:0 auto}
+  .quote blockquote{font-family:var(--serif);font-size:clamp(1.25rem,2.7vw,1.7rem);line-height:1.5;font-style:italic;color:var(--ink)}
+  .quote cite{display:block;margin-top:24px;font-style:normal;font-size:14px;color:var(--muted);letter-spacing:.05em}
+
+  /* contact */
+  .contact-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:40px;align-items:start}
+  .contact-info h2{font-size:clamp(1.7rem,3.2vw,2.3rem);margin-bottom:16px}
+  .contact-info>p{color:var(--ink-soft);margin-bottom:26px;max-width:36ch}
+  .info-list{list-style:none;display:flex;flex-direction:column;gap:16px}
+  .info-list li{display:flex;gap:14px;align-items:flex-start}
+  .info-list .ic{width:42px;height:42px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;flex:none}
+  .info-list b{display:block;font-size:15px}
+  .info-list span{font-size:14px;color:var(--ink-soft)}
+  .info-list a:hover{color:var(--accent)}
+
+  form.contact-form{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px;box-shadow:var(--shadow)}
+  .field{margin-bottom:18px}
+  .field label{display:block;font-size:14px;font-weight:600;margin-bottom:7px}
+  .field input,.field select,.field textarea{
+    width:100%;padding:13px 15px;border-radius:11px;border:1.5px solid var(--line);
+    font-family:var(--sans);font-size:15px;background:var(--bg);color:var(--ink);transition:.2s;
+  }
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent);background:#fff}
+  .field textarea{resize:vertical;min-height:110px}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .form-note{font-size:12.5px;color:var(--muted);margin-top:12px}
+  .form-status{margin-top:14px;padding:12px 14px;border-radius:11px;font-size:14px;display:none}
+  .form-status.ok{display:block;background:#e7f0e2;color:#3d6b34}
+  .form-status.err{display:block;background:#f6e5e1;color:#9a3a28}
+
+  /* footer */
+  footer{background:var(--ink);color:#d9d2c7;padding:52px 0 34px}
+  footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:34px;padding-bottom:34px;border-bottom:1px solid rgba(255,255,255,.12)}
+  footer .brand{color:#fff}
+  footer h4{color:#fff;font-family:var(--serif);font-weight:500;font-size:16px;margin-bottom:14px}
+  footer ul{list-style:none}
+  footer li{margin-bottom:9px;font-size:14px}
+  footer a:hover{color:var(--accent)}
+  footer p.about{font-size:14px;opacity:.85;max-width:30ch;margin-top:14px}
+  footer .bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;font-size:13px;opacity:.7;flex-wrap:wrap;gap:12px}
+
+  /* modal */
+  .dialog{position:fixed;inset:0;z-index:100;display:none;place-items:center;padding:20px}
+  .dialog.open{display:grid}
+  .dialog .backdrop{position:absolute;inset:0;background:rgba(43,38,32,.45)}
+  .dialog .panel{position:relative;background:#fff;border-radius:20px;max-width:420px;width:100%;padding:32px;box-shadow:var(--shadow);text-align:center}
+  .dialog .panel h3{font-size:22px;margin-bottom:10px}
+  .dialog .panel p{color:var(--ink-soft);font-size:15px}
+  .dialog .panel .tick{width:58px;height:58px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;margin:0 auto 18px}
+  .dialog .panel button{margin-top:22px}
+
+  /* reveal on scroll */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:900px){
+    .question,.contact-grid{grid-template-columns:1fr}
+    .grid,.steps,.ages{grid-template-columns:1fr 1fr}
+    .card:last-child,.step:last-child,.age:last-child{grid-column:span 2}
+    .hero{min-height:auto}
+    .hero-shade{background:linear-gradient(90deg,rgba(18,13,9,.95) 0%,rgba(18,13,9,.7) 55%,rgba(18,13,9,.4) 100%)}
+  }
+  @media (max-width:640px){
+    nav.main{display:none;position:fixed;top:64px;left:0;right:0;background:var(--bg);
+      flex-direction:column;padding:20px 24px;gap:22px;border-bottom:1px solid var(--line)}
+    nav.main.open{display:flex}
+    .menu-btn{display:block}
+    .grid,.steps,.ages{grid-template-columns:1fr}
+    .card:last-child,.step:last-child,.age:last-child{grid-column:auto}
+    .field-row{grid-template-columns:1fr}
+    .hero{padding:96px 0 74px}
+    .hero-float{width:100%}
+    section{padding:58px 0}
+    footer .cols{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== TOP BAR ===================== -->
+<header class="top">
+  <div class="wrap topbar">
+    <a class="brand" href="#top" aria-label="Suzuki Piano Studio">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="1" y="12" width="22" height="9" rx="1.5" fill="#fff" stroke="#2b2620" stroke-width="1.1"/>
+        <rect x="4" y="12" width="1.7" height="5.4" fill="#2b2620"/>
+        <rect x="8.2" y="12" width="1.7" height="5.4" fill="#2b2620"/>
+        <rect x="12.4" y="12" width="1.7" height="5.4" fill="#2b2620"/>
+        <rect x="16.6" y="12" width="1.7" height="5.4" fill="#2b2620"/>
+        <rect x="4" y="4.4" width="1.8" height="7.6" rx=".6" fill="#c96f4a"/>
+        <circle cx="4.4" cy="12" r="2" fill="#c96f4a"/>
+      </svg>
+      Suzuki Piano&nbsp;Studio
+    </a>
+    <nav class="main" id="nav">
+      <a href="#about">About</a>
+      <a href="#method">The Method</a>
+      <a href="#ages">Lessons</a>
+      <a href="#faq">For Parents</a>
+      <a href="#contact" class="cta-btn">Book a lesson</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-shade"></div>
+    <div class="hero-wipe"></div>
+    <div class="wrap hero-inner">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Mother-tongue music education</p>
+        <h1>Learning the piano, <br/>the way we learn to <em style="color:#e0a37a;font-style:normal">speak</em>.</h1>
+        <p class="lead">Born in Japan and loved worldwide, the Suzuki Method teaches music by ear, by heart and by happy repetition — so a child grows to love the piano before they ever learn to read it.</p>
+        <div class="actions">
+          <a class="cta-btn" href="#contact">Book a lesson</a>
+          <a class="ghost-btn" href="#method">How it works</a>
+        </div>
+        <div class="hero-float">
+          <span class="dot"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a2 2 0 0 1 2 2v9.35a3.5 3.5 0 1 1-2 0V6.83l6-1.5v2.34l-4 1v5.43A3.5 3.5 0 1 1 12 4.34z"/></svg></span>
+          <div><b>Play by ear</b><span>Listen. Absorb. Then play.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== STRIP ===================== -->
+  <div class="strip reveal">
+    <div class="wrap">
+      <p><b>All ages</b> · from 3 years old up</p>
+      <p><b>Private + group</b> weekly lessons</p>
+      <p><b>Parent-friendly</b> — you attend every lesson</p>
+      <p><b>No reading required</b> to begin</p>
+    </div>
+  </div>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">About the studio</p>
+        <h2>Music first, then notation.</h2>
+        <p>The Suzuki approach rests on one simple belief: every child learns their mother tongue effortlessly — by listening, copying and being encouraged with love. Music can be learned the very same way. Our lessons grow that natural ability into real musicianship.</p>
+      </div>
+      <div class="question reveal">
+        <div>
+          <p class="eyebrow" style="color:#fff;opacity:.8">The philosophy</p>
+          <h2>“Where love is deep, much can be accomplished.”</h2>
+          <p>Founded by violinist Shinichi Suzuki in mid-20th-century Japan, the method treats the parent, child and teacher as one team. The parent is the home teacher; the ear leads before the eye; and skills are built through joyful review.</p>
+        </div>
+        <div class="cards">
+          <div class="q-card"><b>1960s</b><span>Developed in Japan</span></div>
+          <div class="q-card"><b>100+</b><span>Countries worldwide</span></div>
+          <div class="q-card"><b>3</b><span>Player team: parent · child · teacher</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== METHOD / PRINCIPLES ===================== -->
+  <section id="method" class="alt">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Core principles</p>
+        <h2>Five ideas that make it work</h2>
+        <p>Each lesson gently weaves these together, turning practice into a habit a child looks forward to.</p>
+      </div>
+      <div class="grid">
+        <div class="card reveal">
+          <span class="num">01</span>
+          <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 10v4M6 7v10M9 4v16M12 9v6M15 6v12M18 9v6M21 10v4"/></svg></div>
+          <h3>Listen first</h3>
+          <p>Students hear recordings of their pieces again and again before touching the keys, absorbing pitch and rhythm the way they absorb a favourite song.</p>
+        </div>
+        <div class="card reveal">
+          <span class="num">02</span>
+          <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><circle cx="12" cy="16" r="3"/><path d="M8 11v2M16 11v2M12 19v1"/></svg></div>
+          <h3>The triangle partnership</h3>
+          <p>Parent, child and teacher form one team. A parent sits in on each lesson, takes notes and coaches practice at home.</p>
+        </div>
+        <div class="card reveal">
+          <span class="num">03</span>
+          <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <h3>Listen before you read</h3>
+          <p>Sheet-music reading is delayed until a strong ear, good posture and natural technique are firmly established.</p>
+        </div>
+        <div class="card reveal">
+          <span class="num">04</span>
+          <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 12a8 8 0 1 1 2.3 5.6"/><path d="M4 17v-4h4"/></svg></div>
+          <h3>Continuous review</h3>
+          <p>Older pieces are revisited while new ones are added, deepening memory, tonal beauty and expressive phrasing.</p>
+        </div>
+        <div class="card reveal">
+          <span class="num">05</span>
+          <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="8" cy="8" r="2.5"/><circle cx="16" cy="8" r="2.5"/><circle cx="12" cy="15" r="2.5"/><circle cx="6" cy="16" r="2"/><circle cx="18" cy="16" r="2"/></svg></div>
+          <h3>Private &amp; group</h3>
+          <p>Private lessons refine personal technique; regular group classes build ensemble listening, confidence and community.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HOW IT WORKS ===================== -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">A typical journey</p>
+        <h2>From first note to fluent music</h2>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><h3>Listen together</h3><p>At home and in the car, the whole family listens to the repertoire — loving the music before playing it.</p></div>
+        <div class="step reveal"><h3>Small, happy steps</h3><p>One tiny skill mastered at a time: a beautiful tone, a single rhythm, a gentle hand shape. Nothing rushed.</p></div>
+        <div class="step reveal"><h3>Review becomes a gift</h3><p>The review book grows, and old favourites are replayed with new polish — building confidence as skill deepens.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== LESSONS / AGES ===================== -->
+  <section id="ages" class="alt">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Lessons for everyone</p>
+        <h2>Grown-up or tiny hands, there's a place</h2>
+        <p>While Suzuki is famous for the very young, its philosophy of patient, ear-first learning serves learners of any age.</p>
+      </div>
+      <div class="ages">
+        <div class="age reveal">
+          <p class="tag">3–6 years</p>
+          <h3>Little listeners</h3>
+          <p style="font-size:15px;color:var(--ink-soft);margin-bottom:14px">Playful, parent-led beginnings through songs, rhymes and short pre-twinkle activities.</p>
+          <ul>
+            <li>Early ear &amp; rhythm games</li>
+            <li>Parent learns alongside</li>
+            <li>Short, daily 5-minute habits</li>
+          </ul>
+        </div>
+        <div class="age reveal">
+          <p class="tag">7–12 years</p>
+          <h3>Growing musicians</h3>
+          <p style="font-size:15px;color:var(--ink-soft);margin-bottom:14px">The core repertoire years — reading arrives, technique matures and performance confidence blooms.</p>
+          <ul>
+            <li>Book 1 upward repertoire</li>
+            <li>Recitals &amp; group classes</li>
+            <li>Reading &amp; theory as it's ready</li>
+          </ul>
+        </div>
+        <div class="age reveal">
+          <p class="tag">Teens &amp; adults</p>
+          <h3>Never too late</h3>
+          <p style="font-size:15px;color:var(--ink-soft);margin-bottom:14px">Learn for the joy of it — no pressure, no prior experience needed, all at your own pace.</p>
+          <ul>
+            <li>Flexible scheduling</li>
+            <li>Own repertoire &amp; songs</li>
+            <li>Relaxed, enjoyable pace</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PARENTS / FAQ ===================== -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">For parents</p>
+        <h2>“What do I actually have to do?”</h2>
+        <p>You don't need to be a musician — you're the home coach. Here's how it works.</p>
+      </div>
+      <div class="grid" style="grid-template-columns:1fr 1fr">
+        <div class="card reveal"><h3>Do I need to know music?</h3><p>No. You just learn alongside, attend lessons, and gently guide practice at home. Many parents pick up more music than they ever expected.</p></div>
+        <div class="card reveal"><h3>How much practice is needed?</h3><p>A little and often beats a lot and rarely. Short daily sessions that end on a positive note keep children keen — your teacher will tailor the rhythm.</p></div>
+        <div class="card reveal"><h3>What instrument do we need?</h3><p>For beginners, a good acoustic or digital piano at home is ideal. We'll happily advise on options for your space and budget.</p></div>
+        <div class="card reveal"><h3>Is it only for young children?</h3><p>Not at all. While it's beloved with little ones, the same patient, ear-first approach works beautifully for teens and adults too.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== QUOTE ===================== -->
+  <section class="alt">
+    <div class="wrap quote reveal">
+      <blockquote>“The most important thing is to create in the child's heart the desire to be able to do it.”</blockquote>
+      <cite>— Shinichi Suzuki, founder of the Suzuki Method</cite>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section id="contact">
+    <div class="wrap contact-grid">
+      <div class="contact-info reveal">
+        <p class="eyebrow">Get in touch</p>
+        <h2>Let's start your family's musical journey</h2>
+        <p>Have a question about lessons, prices or availability? Send a message and we'll reply within a day. A free trial lesson is the best way to begin.</p>
+        <ul class="info-list">
+          <li>
+            <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+            <div><b>Email</b><span><a href="#" id="contactEmail">hello@suzukipiano.studio</a></span></div>
+          </li>
+          <li>
+            <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 3a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.2-1.3a2 2 0 0 1 2.1-.5c1 .3 2 .6 3 .7a2 2 0 0 1 1.7 2z"/></svg></span>
+            <div><b>Phone / WhatsApp</b><span><a href="#" id="contactPhone">+353 (0) 12 345 6789</a></span></div>
+          </li>
+          <li>
+            <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <div><b>Location</b><span>Dublin, Ireland · lessons at home or in-studio</span></div>
+          </li>
+        </ul>
+      </div>
+
+      <form class="contact-form reveal" id="contactForm" novalidate>
+        <div class="field-row">
+          <div class="field">
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" required placeholder="Jane Smith" autocomplete="name" />
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" placeholder="+353 ..." autocomplete="tel" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required placeholder="you@email.com" autocomplete="email" />
+        </div>
+        <div class="field">
+          <label for="interest">Who is this for?</label>
+          <select id="interest" name="interest">
+            <option value="child_young">Young child (3–6)</option>
+            <option value="child_older">Child / teen (7+)</option>
+            <option value="adult">Adult / self</option>
+            <option value="parent_self">Parent researching for a child</option>
+            <option value="other">Something else</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell us a little about the learner, and any questions you have..."></textarea>
+        </div>
+        <button type="submit" class="cta-btn" style="width:100%;justify-content:center">Send enquiry</button>
+        <p class="form-note">Your details are only used to reply to your enquiry. No spam, ever.</p>
+        <div class="form-status" id="formStatus" role="status"></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a class="brand" href="#top">
+          <svg viewBox="0 0 24 24" width="30" height="30" fill="none" aria-hidden="true">
+            <rect x="1" y="12" width="22" height="9" rx="1.5" fill="#fff" stroke="#fff" stroke-width="1.1"/>
+            <rect x="4" y="12" width="1.7" height="5.4" fill="#2b2620"/>
+            <rect x="8.2" y="12" width="1.7" height="5.4" fill="#2b2620"/>
+            <rect x="12.4" y="12" width="1.7" height="5.4" fill="#2b2620"/>
+            <rect x="16.6" y="12" width="1.7" height="5.4" fill="#2b2620"/>
+            <rect x="4" y="4.4" width="1.8" height="7.6" rx=".6" fill="#c96f4a"/>
+            <circle cx="4.4" cy="12" r="2" fill="#c96f4a"/>
+          </svg>
+          Suzuki Piano&nbsp;Studio
+        </a>
+        <p class="about">Teaching music the mother-tongue way — patient, joyful and ear-first lessons for every age.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#method">The Method</a></li>
+          <li><a href="#ages">Lessons</a></li>
+          <li><a href="#faq">For Parents</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#" id="footEmail">hello@suzukipiano.studio</a></li>
+          <li><a href="#" id="footPhone">+353 (0) 12 345 6789</a></li>
+          <li>Dublin, Ireland</li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>© <span id="year"></span> Suzuki Piano Studio. All rights reserved.</span>
+      <span>Inspired by the Suzuki Method® (Suzuki Association) — independently taught.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- success modal -->
+<div class="dialog" id="dialog" role="dialog" aria-modal="true" aria-labelledby="dlgTitle">
+  <div class="backdrop" data-close></div>
+  <div class="panel">
+    <div class="tick"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m20 6-11 11-5-5"/></svg></div>
+    <h3 id="dlgTitle">Thank you!</h3>
+    <p>Your enquiry has been sent. We'll be in touch within a day to arrange your free trial lesson.</p>
+    <button class="cta-btn" data-close>Close</button>
+  </div>
+</div>
+
+<script>
+  /* mobile menu */
+  var mb=document.getElementById('menuBtn'),nav=document.getElementById('nav');
+  mb.addEventListener('click',function(){nav.classList.toggle('open');mb.setAttribute('aria-expanded',nav.classList.contains('open'));});
+  nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');mb.setAttribute('aria-expanded','false');});});
+
+  /* year */
+  document.getElementById('year').textContent=new Date().getFullYear();
+
+  /* reveal on scroll */
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+
+  /* contact form — sends via Formspree if FORMSPREE_ID set, else opens email */
+  var form=document.getElementById('contactForm'),status=document.getElementById('formStatus'),dialog=document.getElementById('dialog');
+  var FORMSPREE_ID=''; // <-- paste your Formspree form ID here (e.g. "xyzabcd") to enable live submission
+  function showStatus(msg,ok){status.className='form-status '+(ok?'ok':'err');status.textContent=msg;status.style.display='block';setTimeout(function(){status.style.display='none';},7000);}
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=document.getElementById('name').value.trim(),
+        email=document.getElementById('email').value.trim(),
+        tel=document.getElementById('phone').value.trim(),
+        interest=document.getElementById('interest').value,
+        msg=document.getElementById('message').value.trim();
+    if(!name||!email){showStatus('Please add your name and email.',false);return;}
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){showStatus('Please enter a valid email address.',false);return;}
+    var body='Name: '+name+'\nEmail: '+email+'\nPhone: '+tel+'\nWho is this for: '+interest+'\n\n'+msg;
+    if(FORMSPREE_ID){
+      fetch('https://formspree.io/f/'+FORMSPREE_ID,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
+        .then(function(r){if(r.ok){dialog.classList.add('open');form.reset();}else{showStatus('Something went wrong. Please email us directly.',false);}})
+        .catch(function(){showStatus('Could not reach the form service. Please email us directly.',false);});
+    }else{
+      var subject=encodeURIComponent('Suzuki Piano enquiry from '+name);
+      window.location.href='mailto:hello@suzukipiano.studio?subject='+subject+'&body='+encodeURIComponent(body);
+    }
+  });
+  document.querySelectorAll('[data-close]').forEach(function(el){el.addEventListener('click',function(){dialog.classList.remove('open');});});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')dialog.classList.remove('open');});
+
+  /* fill placeholder contact links with placeholders (edit to real) */
+  var cEmail='hello@suzukipiano.studio', cPhone='+353123456789';
+  document.getElementById('contactEmail').href='mailto:'+cEmail;
+  document.getElementById('footEmail').href='mailto:'+cEmail;
+  document.getElementById('contactPhone').href='tel:'+cPhone;
+  document.getElementById('footPhone').href='tel:'+cPhone;
+
+  /* simple PWA install capture (works when served over https + registered SW) */
+  var deferredPrompt=null;
+  window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();deferredPrompt=e;});
+</script>
+<script>
+  /* register service worker (only when served over a real origin) */
+  if('serviceWorker' in navigator && location.protocol!=='file:'){
+    window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});
+  }
+</script>
+</body>
+</html>
