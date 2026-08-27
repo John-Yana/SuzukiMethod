@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<meta name="description" content="Suzuki Piano Studio — nurturing a lifelong love of music the mother-tongue way. Piano lessons for all ages, taught through listening, repetition and joyful partnership between parent, child and teacher." />
+<meta name="description" content="Suzuki Piano Studio — nurturing a lifelong love of music the mother-tongue way. Piano lessons for children from age three, taught through listening, repetition and joyful partnership between parent, child and teacher." />
 <meta name="theme-color" content="#faf6f0" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -137,6 +137,7 @@
 
   /* principles grid */
   .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .grid-2{grid-template-columns:repeat(2,1fr)}
   .card{
     background:#fff;border:1px solid var(--line);border-radius:var(--radius);
     padding:30px 26px;transition:.25s;position:relative;
@@ -158,7 +159,7 @@
   .step p{font-size:15px;color:var(--ink-soft)}
 
   /* age cards */
-  .ages{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .ages{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
   .age{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px 26px;transition:.25s}
   .age:hover{box-shadow:var(--shadow);transform:translateY(-4px)}
   .age .tag{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;font-weight:600}
@@ -171,7 +172,7 @@
   .question{background:var(--accent);color:#fff;border-radius:var(--radius);padding:46px 40px;display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center}
   .question h2{font-size:clamp(1.5rem,3vw,2.1rem);margin-bottom:14px}
   .question p{opacity:.92}
-  .question .cards{display:flex;gap:14px}
+  .question .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
   .question .q-card{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:14px;padding:18px 16px;flex:1}
   .question .q-card b{display:block;font-size:26px;font-family:var(--serif)}
   .question .q-card span{font-size:12.5px;opacity:.9}
@@ -232,10 +233,20 @@
   .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
   .reveal.in{opacity:1;transform:none}
 
+  /* back to top */
+  .to-top{position:fixed;right:18px;bottom:18px;width:46px;height:46px;border:none;border-radius:50%;
+    background:var(--accent);color:#fff;cursor:pointer;display:grid;place-items:center;z-index:60;
+    box-shadow:var(--shadow);opacity:0;visibility:hidden;transform:translateY(14px);
+    transition:opacity .3s ease,transform .3s ease,visibility .3s ease,background .25s ease}
+  .to-top.show{opacity:1;visibility:visible;transform:none}
+  .to-top:hover,.to-top:focus-visible{background:var(--accent-deep)}
+  .to-top:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+
   @media (max-width:900px){
     .question,.contact-grid{grid-template-columns:1fr}
     .grid,.steps,.ages{grid-template-columns:1fr 1fr}
-    .card:last-child,.step:last-child,.age:last-child{grid-column:span 2}
+    .card:last-child,.step:last-child{grid-column:span 2}
+    .grid-2 .card:last-child{grid-column:auto}
     .hero{min-height:auto}
     .hero-shade{background:linear-gradient(90deg,rgba(18,13,9,.95) 0%,rgba(18,13,9,.7) 55%,rgba(18,13,9,.4) 100%)}
   }
@@ -245,7 +256,10 @@
     nav.main.open{display:flex}
     .menu-btn{display:block}
     .grid,.steps,.ages{grid-template-columns:1fr}
-    .card:last-child,.step:last-child,.age:last-child{grid-column:auto}
+    .grid-2{grid-template-columns:1fr}
+    .question{padding:34px 22px}
+    .ages{gap:16px}
+    .card:last-child,.step:last-child{grid-column:auto}
     .field-row{grid-template-columns:1fr}
     .hero{padding:96px 0 74px}
     .hero-float{width:100%}
@@ -309,7 +323,7 @@
   <!-- ===================== STRIP ===================== -->
   <div class="strip reveal">
     <div class="wrap">
-      <p><b>All ages</b> · from 3 years old up</p>
+      <p><b>Children 3+</b> · from three years old up</p>
       <p><b>Private + group</b> weekly lessons</p>
       <p><b>Parent-friendly</b> — you attend every lesson</p>
       <p><b>No reading required</b> to begin</p>
@@ -401,9 +415,9 @@
   <section id="ages" class="alt">
     <div class="wrap">
       <div class="sec-head reveal">
-        <p class="eyebrow">Lessons for everyone</p>
-        <h2>Grown-up or tiny hands, there's a place</h2>
-        <p>While Suzuki is famous for the very young, its philosophy of patient, ear-first learning serves learners of any age.</p>
+        <p class="eyebrow">Lessons for children</p>
+        <h2>From tiny hands to confident musicians</h2>
+        <p>We teach children from three years old up — the age when the mother-tongue approach works its magic most naturally. Every step is paced to the child.</p>
       </div>
       <div class="ages">
         <div class="age reveal">
@@ -417,23 +431,13 @@
           </ul>
         </div>
         <div class="age reveal">
-          <p class="tag">7–12 years</p>
+          <p class="tag">7 years &amp; up</p>
           <h3>Growing musicians</h3>
           <p style="font-size:15px;color:var(--ink-soft);margin-bottom:14px">The core repertoire years — reading arrives, technique matures and performance confidence blooms.</p>
           <ul>
             <li>Book 1 upward repertoire</li>
             <li>Recitals &amp; group classes</li>
             <li>Reading &amp; theory as it's ready</li>
-          </ul>
-        </div>
-        <div class="age reveal">
-          <p class="tag">Teens &amp; adults</p>
-          <h3>Never too late</h3>
-          <p style="font-size:15px;color:var(--ink-soft);margin-bottom:14px">Learn for the joy of it — no pressure, no prior experience needed, all at your own pace.</p>
-          <ul>
-            <li>Flexible scheduling</li>
-            <li>Own repertoire &amp; songs</li>
-            <li>Relaxed, enjoyable pace</li>
           </ul>
         </div>
       </div>
@@ -448,11 +452,11 @@
         <h2>“What do I actually have to do?”</h2>
         <p>You don't need to be a musician — you're the home coach. Here's how it works.</p>
       </div>
-      <div class="grid" style="grid-template-columns:1fr 1fr">
+      <div class="grid grid-2">
         <div class="card reveal"><h3>Do I need to know music?</h3><p>No. You just learn alongside, attend lessons, and gently guide practice at home. Many parents pick up more music than they ever expected.</p></div>
         <div class="card reveal"><h3>How much practice is needed?</h3><p>A little and often beats a lot and rarely. Short daily sessions that end on a positive note keep children keen — your teacher will tailor the rhythm.</p></div>
         <div class="card reveal"><h3>What instrument do we need?</h3><p>For beginners, a good acoustic or digital piano at home is ideal. We'll happily advise on options for your space and budget.</p></div>
-        <div class="card reveal"><h3>Is it only for young children?</h3><p>Not at all. While it's beloved with little ones, the same patient, ear-first approach works beautifully for teens and adults too.</p></div>
+        <div class="card reveal"><h3>What ages do you teach?</h3><p>We teach children from three years old up. The earliest years are the sweet spot for ear-first learning — but a child of any age can begin and thrive.</p></div>
       </div>
     </div>
   </section>
@@ -483,12 +487,16 @@
           </li>
           <li>
             <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
-            <div><b>Location</b><span>Dublin, Ireland · lessons at home or in-studio</span></div>
+            <div><b>Location</b><span>Limerick, Ireland · lessons in our studio</span></div>
           </li>
         </ul>
       </div>
 
       <form class="contact-form reveal" id="contactForm" novalidate>
+        <!-- FormSubmit config: table layout in the email, no captcha, honeypot for spam bots -->
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
         <div class="field-row">
           <div class="field">
             <label for="name">Your name</label>
@@ -507,8 +515,7 @@
           <label for="interest">Who is this for?</label>
           <select id="interest" name="interest">
             <option value="child_young">Young child (3–6)</option>
-            <option value="child_older">Child / teen (7+)</option>
-            <option value="adult">Adult / self</option>
+            <option value="child_older">Older child (7+)</option>
             <option value="parent_self">Parent researching for a child</option>
             <option value="other">Something else</option>
           </select>
@@ -542,7 +549,7 @@
           </svg>
           Suzuki Piano&nbsp;Studio
         </a>
-        <p class="about">Teaching music the mother-tongue way — patient, joyful and ear-first lessons for every age.</p>
+        <p class="about">Teaching music the mother-tongue way — patient, joyful and ear-first lessons for children from age three.</p>
       </div>
       <div>
         <h4>Explore</h4>
@@ -558,7 +565,7 @@
         <ul>
           <li><a href="#" id="footEmail">hello@suzukipiano.studio</a></li>
           <li><a href="#" id="footPhone">+353 (0) 12 345 6789</a></li>
-          <li>Dublin, Ireland</li>
+          <li>Limerick, Ireland</li>
         </ul>
       </div>
     </div>
@@ -580,6 +587,11 @@
   </div>
 </div>
 
+<!-- back to top -->
+<button class="to-top" id="toTop" aria-label="Back to top" title="Back to top">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+</button>
+
 <script>
   /* mobile menu */
   var mb=document.getElementById('menuBtn'),nav=document.getElementById('nav');
@@ -595,28 +607,36 @@
   },{threshold:.12});
   document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
 
-  /* contact form — sends via Formspree if FORMSPREE_ID set, else opens email */
+  /* contact form — enquiries are emailed straight to the studio inbox via FormSubmit (no account needed).
+     NOTE: the very FIRST submission triggers a one-time "activate" email to INBOX — click the link
+     in it once, and every enquiry after that arrives as a normal email. */
   var form=document.getElementById('contactForm'),status=document.getElementById('formStatus'),dialog=document.getElementById('dialog');
-  var FORMSPREE_ID=''; // <-- paste your Formspree form ID here (e.g. "xyzabcd") to enable live submission
+  var INBOX='eithne_ie@hotmail.com';
   function showStatus(msg,ok){status.className='form-status '+(ok?'ok':'err');status.textContent=msg;status.style.display='block';setTimeout(function(){status.style.display='none';},7000);}
   form.addEventListener('submit',function(e){
     e.preventDefault();
     var name=document.getElementById('name').value.trim(),
         email=document.getElementById('email').value.trim(),
-        tel=document.getElementById('phone').value.trim(),
-        interest=document.getElementById('interest').value,
-        msg=document.getElementById('message').value.trim();
+        interestSel=document.getElementById('interest'),
+        interest=interestSel.options[interestSel.selectedIndex].text,
+        msg=document.getElementById('message').value.trim(),
+        btn=form.querySelector('button[type=submit]');
     if(!name||!email){showStatus('Please add your name and email.',false);return;}
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){showStatus('Please enter a valid email address.',false);return;}
-    var body='Name: '+name+'\nEmail: '+email+'\nPhone: '+tel+'\nWho is this for: '+interest+'\n\n'+msg;
-    if(FORMSPREE_ID){
-      fetch('https://formspree.io/f/'+FORMSPREE_ID,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
-        .then(function(r){if(r.ok){dialog.classList.add('open');form.reset();}else{showStatus('Something went wrong. Please email us directly.',false);}})
-        .catch(function(){showStatus('Could not reach the form service. Please email us directly.',false);});
-    }else{
-      var subject=encodeURIComponent('Suzuki Piano enquiry from '+name);
-      window.location.href='mailto:hello@suzukipiano.studio?subject='+subject+'&body='+encodeURIComponent(body);
-    }
+    btn.disabled=true;btn.textContent='Sending…';
+    var data=new FormData(form);
+    data.set('interest',interest);            /* send the readable label, not the code */
+    data.set('_subject','New piano enquiry — '+name);
+    data.set('_replyto',email);               /* lets the studio hit Reply to answer the parent */
+    fetch('https://formsubmit.co/ajax/'+INBOX,{method:'POST',body:data,headers:{'Accept':'application/json'}})
+      .then(function(r){return r.json().then(function(j){return{ok:r.ok,success:!!(j&&j.success),message:(j&&j.message)||''};});})
+      .then(function(res){
+        if(res.ok&&res.success){dialog.classList.add('open');form.reset();}
+        else if(/activation/i.test(res.message)){showStatus('One-time setup: an "Activate Form" email has been sent to the studio inbox — click the link in it, then submit again.',false);}
+        else{showStatus('Something went wrong — please try again in a moment.',false);}
+      })
+      .catch(function(){showStatus('Could not reach the email service — please check your connection and try again.',false);})
+      .then(function(){btn.disabled=false;btn.textContent='Send enquiry';});
   });
   document.querySelectorAll('[data-close]').forEach(function(el){el.addEventListener('click',function(){dialog.classList.remove('open');});});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')dialog.classList.remove('open');});
@@ -631,6 +651,15 @@
   /* simple PWA install capture (works when served over https + registered SW) */
   var deferredPrompt=null;
   window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();deferredPrompt=e;});
+
+  /* back to top */
+  var toTop=document.getElementById('toTop');
+  if(toTop){
+    var syncToTop=function(){toTop.classList.toggle('show',window.scrollY>420);};
+    window.addEventListener('scroll',syncToTop,{passive:true});
+    toTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+    syncToTop();
+  }
 </script>
 <script>
   /* register service worker (only when served over a real origin) */

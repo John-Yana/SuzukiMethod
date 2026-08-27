@@ -1,7 +1,7 @@
 {
   "name": "Suzuki Piano Studio",
   "short_name": "Suzuki Piano",
-  "description": "Teaching piano the mother-tongue way — ear-first, joyful lessons for all ages.",
+  "description": "Teaching piano the mother-tongue way — ear-first, joyful lessons for children from age three.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

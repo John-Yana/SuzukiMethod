@@ -1,6 +1,6 @@
 /* Service worker for Suzuki Piano Studio — gives basic offline caching so the page
    loads instantly and works with no connection. Update the version to bust caches. */
-const CACHE = 'suzuki-piano-v2';
+const CACHE = 'suzuki-piano-v3';
 const ASSETS = [
   './',
   './index.html',
